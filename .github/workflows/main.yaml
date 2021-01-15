@@ -4,6 +4,7 @@ defaults:
 
 jobs:
   build:
+    name: building
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -11,12 +12,16 @@ jobs:
       - run: dotnet build
        
   test:
+    needs: build
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - run: dotnet test
        
   pack: 
+    needs: 
+      - build
+      - test
     runs-on: ubuntu-20.04
     env:
         DOCKER_TOKEN : ${{secrets.DOCKER_TOKEN}}
