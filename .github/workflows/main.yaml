@@ -24,8 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: echo $DOCKER_TOKEN | docker login -u $DOCKER_USER --password-stdin
-      - run: docker image build -f dockerfile -t dockerdemo
-        working-directory: ../
+      - run: docker image build -f ../dockerfile -t dockerdemo ../
       - run: docker image tag dockerdemo nardockerid/dockerdemo
       - run: docker image push nardockerid/dockerdemo
       - run: docker logout
