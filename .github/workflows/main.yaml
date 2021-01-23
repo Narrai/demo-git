@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-20.04
     env: 
       SONARCLOUD_TOKEN: ${{secrets.SONARCLOUD_TOKEN}}
-      # GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
     steps:
       - uses: actions/checkout@v2
       - run: dotnet tool install --global dotnet-sonarscanner
